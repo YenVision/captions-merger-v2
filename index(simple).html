@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Caption Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7feff;
+            /* Background color */
+        }
+
+        h1 {
+            text-align: center;
+            color: #000;
+            /* Heading color */
+            margin-top: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 40px;
+            /* Increased padding for better spacing */
+        }
+
+        .input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            /* Increased gap between input boxes by 10% */
+            justify-content: center;
+            /* Center-align input boxes */
+        }
+
+        .big-box {
+            border: 2px solid #ffd75f;
+            /* Pink color */
+            border-radius: 30px;
+            padding: 20px;
+            background-color: #ff8336;
+            /* Foreground color */
+            box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
+            /* Increased shadow by 8% */
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            /* Center-align content */
+        }
+
+        .input-box {
+            border: 3px solid #ffdc8c;
+            /* Pink color */
+            border-radius: 40px;
+            padding: 5px;
+            /* Increased padding */
+            margin: 20px 8px;
+            background-color: #fff;
+            width: 220px;
+            /* Increased width */
+            height: 160px;
+            /* Increased width */
+            box-sizing: border-box;
+            box-shadow: 0 9px 9px rgba(0, 0, 0, 0.18);
+            /* Increased shadow by 8% */
+            text-align: center;
+            /* Center-align content */
+
+        }
+    
+        .input-box textarea {
+            height: 70px;
+            /* Adjusted height for default caption */
+            width: 78%;
+            /* Full width of the container */
+            resize: vertical;
+            border: none;
+            outline: none;
+            width: 92%;
+            /* Full width of the container */
+            box-sizing: border-box;
+            overflow-x: hidden;
+            /* Hide horizontal scrollbar */
+            overflow-y: hidden;
+            /* Allow vertical scrollbar if needed */
+        }
+
+        .input-box.custom-caption textarea {
+            width: 98%;
+            /* Full width of the container */
+            border-radius: 15px;
+            /* Rounded corners */
+            padding: 12px;
+            /* Comfortable padding */
+            height: 180px;
+            /* Increase height for larger text area */
+            resize: vertical;
+            /* Allow vertical resizing only */
+        }
+
+        .input-box.custom-caption {
+            width: calc(60% - 30px);
+            /* Decreased width by 25% */
+            height: 200px;
+            /* Increased height for custom caption */
+            margin: 0 auto;
+            /* Center-aligned */
+            border-radius: 7mm;
+            /* Rounded corners */
+        }
+
+        .result-box {
+            border: 2px solid #fdfcdc;
+            border-radius: 30px;
+            padding: 20px;
+            background-color: #ffebcbf8;
+            box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
+            margin-bottom: 10px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 90px;
+        }
+
+        .result-box h3 {
+            margin-top: 5px;
+            font-size: 1.4em;
+        }
+
+        .result-box p {
+            margin: 0;
+            white-space: pre-line;
+            /* Maintain formatting */
+            padding-bottom: 2%;
+        }
+
+        button {
+            padding: 10px 20px;
+            /* Adjusted padding */
+            border: none;
+            border-radius: 15px;
+            background-color: #e7c6ff;
+            /* Default button color */
+            color: #ffffff;
+            /* Text color */
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            /* Transition for color, shadow, and transform */
+            box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
+            /* Increased shadow by 8% */
+            text-align: center;
+            /* Center-align text */
+        }
+
+        button:hover {
+            background-color: #80ffdb;
+            /* Hover color */
+            transform: scale(1.05);
+            /* Zoom effect on hover */
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+            /* Increased shadow on hover */
+        }
+
+        button:active {
+            background-color: #ccff33;
+            /* Darker shade on click */
+        }
+
+        .copy-button {
+            background-color: #451700;
+            color: #ffffff;
+            margin-top: 0px;
+            margin-bottom: 10px;
+            position: absolute;
+            bottom: 8px;
+            left: 38.6%;
+            width: 23%;
+        }
+
+        .copy-button:hover {
+            background-color: #ff5500;
+            ;
+            /* Hover color */
+            color: #ffffff;
+            /* Text color contrasting with background */
+            box-shadow: 0 4px 12px #ff5500;
+            /* Add shadow on hover */
+            transform: scale(1.05);
+            /* Zoom effect on hover */
+
+        }
+
+        .copy-button:active {
+            background-color: #662200;
+            /* Darker shade on active */
+        }
+
+        .merge-button {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding-top: 15px;
+            /* Top padding */
+            padding-bottom: 15px;
+            /* Bottom padding */
+            padding-left: 5px;
+            /* Left padding */
+            padding-right: 5px;
+            /* Right padding */
+            margin-left: 20%;
+            margin-right: 20%;
+            margin-top: 36px;
+            margin-bottom: 40px;
+            background-color: #451700;
+            /* Default button color */
+            color: #ffffff;
+            /* Text color */
+            border: none;
+            border-radius: 15px;
+            /* Rounded corners */
+            box-shadow: 0 4px 13px rgb(137, 94, 59);
+            /* Increased shadow by 8% */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            /* Transition for color, shadow, and transform */
+            text-align: center;
+            /* Center-align text */
+            font-size: 1.5em;
+            /* Adjust text size here */
+        }
+
+        .merge-button:hover {
+            color: #ffffff;
+            background-color: #ff5500;
+            /* Hover color */
+            transform: scale(1.05);
+            /* Zoom effect on hover */
+            box-shadow: 0 4px 14px rgb(255, 94, 0);
+            /* Increased shadow on hover */
+        }
+
+        .merge-button:active {
+            background-color: #672900;
+            /* Darker shade on click */
+        }
+
+        .result-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            position: relative;
+            min-height: 100px;
+            
+            /* or any other value that makes sense for your design */
+
+        }
+
+        .result-box:nth-child(5) {
+            grid-column: 1 / -1;
+            /* Center the fifth result in the middle */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>YENVISION CAPTIONS MERGER</h1>
+    <div class="container">
+        <div class="big-box">
+            <h3 style="font-size: 1.3em;">Default Captions</h3>
+            <div class="input-container">
+                <div class="input-box">
+                    <h4>Facebook:</h4>
+                    <!-- Static default caption for Facebook -->
+                    <textarea id="fb_default" readonly>
+For More Check out our store:
+https://linktr.ee/YenVision
+
+Follow @Ye for more amazing products...
+Join us in discovering art that sparks inspiration and adds a touch of creativity to your world.
+                        
+#homeaccessories #tshirts #patterns #AnimeArt #Stickers #CascadingWaterfall #NatureInspired #animewaterfall #waterfalls #AnimeAesthetic #NatureLovers #AnimeArt #Anime
+                        
+Contact Us for Business Inquires. 
+					</textarea>
+                </div>
+                <div class="input-box">
+                    <h4>Instagram:</h4>
+                    <!-- Static default caption for Instagram -->
+                    <textarea id="ig_default" readonly>
+For More Check out our store, the link is in bio....
+I'm quite sure you'll find something that you love and that speaks to your heart.
+
+Follow @yen_vision for more amazing products....
+Join us in discovering art that sparks inspiration and adds a touch of creativity to your world.
+
+#homedecor #homeaccessories #tshirts #patterns #AnimeArt #Stickers #CascadingWaterfall #NatureInspired #animewaterfall #waterfalls #AnimeAesthetic #NatureLovers #AnimeArt #Anime
+
+Contact Us for Business Inquires.
+					</textarea>
+                </div>
+                <div class="input-box">
+                    <h4>Pinterest:</h4>
+                    <!-- Static default caption for Pinterest -->
+                    <textarea id="pin_default" readonly>
+Check out our store, to explore more Attractive Products.
+
+Follow Yen Vision for more amazing products...
+Join us in discovering art that sparks inspiration and adds a touch of creativity to your world.
+
+#homeaccessories #tshirts #patterns #AnimeArt #Stickers #CascadingWaterfall #NatureInspired #animewaterfall #waterfalls #AnimeAesthetic #NatureLovers #AnimeArt #Anime
+
+Contact Us for Business Inquires.
+					</textarea>
+                </div>
+                <div class="input-box">
+                    <h4>Telegram:</h4>
+                    <!-- Static default caption for Telegram -->
+                    <textarea id="tel_default" readonly>
+For More, Explore this link: https://linktr.ee/YenVision
+
+I'm quite sure you'll find something that you love and that speaks to your heart....
+
+Contact Us for Business Inquires.
+					</textarea>
+                </div>
+                <div class="input-box">
+                    <h4>X (Formerly Twitter):</h4>
+                    <!-- Static default caption for X (formerly Twitter) -->
+                    <textarea id="x_default" readonly>
+Contact Us for Business Inquires. 
+					</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="big-box">
+            <h3 style="font-size: 1.3em;">Custom Caption</h3>
+            <div class="input-box custom-caption">
+                <textarea id="custom_caption" placeholder="Enter Your Custom Caption"></textarea>
+            </div>
+        </div>
+
+        <button class="merge-button" onclick="mergeAndDisplay()">
+            Merge & Generate Caption
+        </button>
+
+        <div id="result" class="result-container"></div>
+    </div>
+
+    <script>
+        function mergeAndDisplay() {
+            const platforms = {
+                'fb': 'Facebook',
+                'ig': 'Instagram',
+                'pin': 'Pinterest',
+                'tel': 'Telegram',
+                'x': 'X (formerly Twitter)',
+            };
+            const resultDiv = document.getElementById('result');
+            const customCaption = document.getElementById('custom_caption').value.trim();
+            resultDiv.innerHTML = ''; // Clear previous results
+
+            for (const [key, platform] of Object.entries(platforms)) {
+                const defaultCaption = document.getElementById(`${key}_default`).value.trim();
+                const combinedCaption = `${customCaption}\n\n${defaultCaption}`;
+
+                const resultBox = document.createElement('div');
+                resultBox.classList.add('result-box');
+
+                resultBox.innerHTML = `
+                    <h3>${platform}</h3>
+                    <p>${combinedCaption}</p>
+                    <button class="copy-button" onclick="copyToClipboard(\`${combinedCaption}\`, this)">Copy</button>
+                `;
+
+                resultDiv.appendChild(resultBox);
+            }
+        }
+
+        function copyToClipboard(text, button) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            button.textContent = 'Copied';
+            button.classList.add('copied');
+
+            setTimeout(() => {
+                button.textContent = 'Copy';
+                button.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+<footer style="
+position: static; /* Keeps the footer at the bottom of the page */
+    left: 0;        /* Set left to 0px */
+    right: 0;       /* Set right to 0px */
+    bottom: 0px; 
+text-align: center; 
+padding: 0px; 
+margin-top: 6%;
+">
+    <p>&copy; 2024 Yenvision. All rights reserved.</p>
+</footer>
+
+</html>
