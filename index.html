@@ -43,7 +43,7 @@
             /* Pink color */
             border-radius: 30px;
             padding: 20px;
-            background-color: #ff8336;
+            background-image:linear-gradient( to right bottom , #ff9a42, #ff6200);
             /* Foreground color */
             box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
             /* Increased shadow by 8% */
@@ -62,17 +62,20 @@
             margin: 20px 8px;
             background-color: #fff;
             width: 220px;
-            /* Increased width */
             height: 160px;
-            /* Increased width */
             box-sizing: border-box;
             box-shadow: 0 9px 9px rgba(0, 0, 0, 0.18);
             /* Increased shadow by 8% */
             text-align: center;
             /* Center-align content */
-
+            transition: box-shadow 0.4s;
         }
-    
+
+        
+        .input-box:hover {
+            box-shadow: #00000066 0 9px 12px;
+        }
+
         .input-box textarea {
             height: 70px;
             /* Adjusted height for default caption */
@@ -86,7 +89,8 @@
             box-sizing: border-box;
             overflow-x: hidden;
             /* Hide horizontal scrollbar */
-            overflow-y: hidden;
+            overflow-y: auto;
+            cursor: not-allowed;
             /* Allow vertical scrollbar if needed */
         }
 
@@ -113,17 +117,35 @@
             border-radius: 7mm;
             /* Rounded corners */
         }
+        
+        .result-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            position: relative;
+            min-height: 100px;
+        }
+
+        .result-box:nth-child(5) {
+            grid-column: 1/ -1;
+        }
 
         .result-box {
-            border: 2px solid #fdfcdc;
+            border: 2px solid #c67a002d;
             border-radius: 30px;
             padding: 20px;
-            background-color: #ffebcbf8;
+            background-color: #fff4e6f8;
             box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
             margin-bottom: 10px;
             text-align: center;
             position: relative;
-            padding-bottom: 90px;
+            padding-bottom: 60px;
+            transition: box-shadow 0.4s;
+
+        }
+        .result-box:hover {
+            box-shadow: #4f220092 0 9px 12px;
+
         }
 
         .result-box h3 {
@@ -131,11 +153,29 @@
             font-size: 1.4em;
         }
 
-        .result-box p {
+        #result .result-box p {
             margin: 0;
-            white-space: pre-line;
-            /* Maintain formatting */
-            padding-bottom: 2%;
+            white-space: break-spaces;
+            border: 1px solid #503c005c;
+            border-radius: 14px;
+            overflow-y: auto;
+            max-height: 130px;
+            padding: 10px;
+        }
+
+        #result .result-box p::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        #result .result-box p::-webkit-scrollbar-thumb {
+            background-image: linear-gradient(45deg, #de5d00, #ff6a00, #ff6a00, #de5d00, #de5d00, #ff6a00, #ff6a00, #de5d00);
+            border-radius: 12px;
+        }
+
+        #result .result-box p::-webkit-scrollbar-track {
+            background-color: #3a281851;
+            border-radius: 10px;
         }
 
         button {
@@ -178,7 +218,7 @@
             margin-top: 0px;
             margin-bottom: 10px;
             position: absolute;
-            bottom: 8px;
+            bottom: 5px;
             left: 38.6%;
             width: 23%;
         }
@@ -248,30 +288,15 @@
             /* Darker shade on click */
         }
 
-        .result-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            position: relative;
-            min-height: 100px;
-            
-            /* or any other value that makes sense for your design */
-
-        }
-
-        .result-box:nth-child(5) {
-            grid-column: 1 / -1;
-            /* Center the fifth result in the middle */
-        }
     </style>
 </head>
 
 <body>
     <h1>YENVISION CAPTIONS MERGER</h1>
-    <div class="container">
-        <div class="big-box">
+    <div class="container ">
+        <div class="big-box ">
             <h3 style="font-size: 1.3em;">Default Captions</h3>
-            <div class="input-container">
+            <div class="input-container ">
                 <div class="input-box">
                     <h4>Facebook:</h4>
                     <!-- Static default caption for Facebook -->
