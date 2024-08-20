@@ -43,7 +43,7 @@
             /* Pink color */
             border-radius: 30px;
             padding: 20px;
-            background-image:linear-gradient( to right bottom , #ff9a42, #ff6200);
+            background-image: linear-gradient(to right bottom, #ff9a42, #ff6200);
             /* Foreground color */
             box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
             /* Increased shadow by 8% */
@@ -71,40 +71,77 @@
             transition: box-shadow 0.4s;
         }
 
-        
+
         .input-box:hover {
             box-shadow: #00000066 0 9px 12px;
         }
 
         .input-box textarea {
             height: 70px;
-            /* Adjusted height for default caption */
             width: 78%;
-            /* Full width of the container */
             resize: vertical;
             border: none;
             outline: none;
             width: 92%;
-            /* Full width of the container */
             box-sizing: border-box;
             overflow-x: hidden;
-            /* Hide horizontal scrollbar */
             overflow-y: auto;
             cursor: not-allowed;
-            /* Allow vertical scrollbar if needed */
+        }
+
+        .input-box textarea::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        .input-box textarea::-webkit-scrollbar-thumb {
+            background-image: repeating-linear-gradient(45deg,
+                    #de5d00 0px,
+                    #de5d00 5px,
+                    #ff6a00 5px,
+                    #ff6a00 10px,
+                    #de5d00 10px,
+                    #de5d00 15px,
+                    #ff6a00 15px,
+                    #ff6a00 20px);
+            border-radius: 12px;
+        }
+
+        .input-box textarea::-webkit-scrollbar-track {
+            background-color: #362b21;
+            border-radius: 10px;
         }
 
         .input-box.custom-caption textarea {
             width: 98%;
-            /* Full width of the container */
             border-radius: 15px;
-            /* Rounded corners */
             padding: 12px;
-            /* Comfortable padding */
             height: 180px;
-            /* Increase height for larger text area */
             resize: vertical;
-            /* Allow vertical resizing only */
+            cursor: text;
+        }
+
+        .input-box.custom-caption textarea::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        .input-box.custom-caption textarea::-webkit-scrollbar-thumb {
+            background-image: repeating-linear-gradient(45deg,
+                    #de5d00 0px,
+                    #de5d00 10px,
+                    #ff6a00 10px,
+                    #ff6a00 20px,
+                    #de5d00 20px,
+                    #de5d00 30px,
+                    #ff6a00 30px,
+                    #ff6a00 40px);
+            border-radius: 12px;
+        }
+
+        .input-box.custom-caption textarea::-webkit-scrollbar-track {
+            background-color: #362b21;
+            border-radius: 10px;
         }
 
         .input-box.custom-caption {
@@ -117,7 +154,7 @@
             border-radius: 7mm;
             /* Rounded corners */
         }
-        
+
         .result-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -137,12 +174,15 @@
             background-color: #fff4e6f8;
             box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
             margin-bottom: 10px;
+            min-width: 610px;
+            justify-content: center;
             text-align: center;
             position: relative;
             padding-bottom: 60px;
             transition: box-shadow 0.4s;
 
         }
+
         .result-box:hover {
             box-shadow: #4f220092 0 9px 12px;
 
@@ -158,6 +198,7 @@
             white-space: break-spaces;
             border: 1px solid #503c005c;
             border-radius: 14px;
+            overflow-x:hidden;
             overflow-y: auto;
             max-height: 130px;
             padding: 10px;
@@ -169,12 +210,20 @@
         }
 
         #result .result-box p::-webkit-scrollbar-thumb {
-            background-image: linear-gradient(45deg, #de5d00, #ff6a00, #ff6a00, #de5d00, #de5d00, #ff6a00, #ff6a00, #de5d00);
-            border-radius: 12px;
+            background-image: repeating-linear-gradient(45deg,
+                    #de5d00 0px,
+                    #de5d00 10px,
+                    #ff6a00 10px,
+                    #ff6a00 20px,
+                    #de5d00 20px,
+                    #de5d00 30px,
+                    #ff6a00 30px,
+                    #ff6a00 40px);
+                     border-radius: 12px;
         }
 
         #result .result-box p::-webkit-scrollbar-track {
-            background-color: #3a281851;
+            background-color: #362b21;
             border-radius: 10px;
         }
 
@@ -288,6 +337,33 @@
             /* Darker shade on click */
         }
 
+        body {
+            overflow-y: scroll;
+            /* Add this to ensure the scrollbar appears */
+        }
+
+        body::-webkit-scrollbar {
+            width: 12px;
+            height: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-image: repeating-linear-gradient(45deg,
+                    #de5d00 0px,
+                    #de5d00 25px,
+                    #ff6a00 25px,
+                    #ff6a00 50px,
+                    #de5d00 30px,
+                    #de5d00 25px,
+                    #ff6a00 25px,
+                    #ff6a00 30px);
+            border-radius: 40px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #362b21;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -295,7 +371,7 @@
     <h1>YENVISION CAPTIONS MERGER</h1>
     <div class="container ">
         <div class="big-box ">
-            <h3 style="font-size: 1.3em;">Default Captions</h3>
+            <h3 style="font-size: 1.4em;">Default Captions</h3>
             <div class="input-container ">
                 <div class="input-box">
                     <h4>Facebook:</h4>
