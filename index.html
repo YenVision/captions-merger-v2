@@ -160,11 +160,12 @@
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             position: relative;
-            min-height: 100px;
+            min-height: 50px;
         }
 
         .result-box:nth-child(5) {
             grid-column: 1/ -1;
+            grid-row: auto;
         }
 
         .result-box {
@@ -174,7 +175,7 @@
             background-color: #fff4e6f8;
             box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
             margin-bottom: 10px;
-            min-width: 610px;
+            min-width: 20vw;
             justify-content: center;
             text-align: center;
             position: relative;
@@ -338,6 +339,7 @@
         }
 
         body {
+            overflow-x: hidden;
             overflow-y: scroll;
             /* Add this to ensure the scrollbar appears */
         }
