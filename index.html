@@ -7,14 +7,16 @@
     <title>Social Media Caption Manager</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #f7feff;
             /* Background color */
+            cursor: url("rounded.png"), auto;
         }
 
         h1 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             text-align: center;
             color: #000;
             /* Heading color */
@@ -45,12 +47,13 @@
             padding: 20px;
             background-image: linear-gradient(to right bottom, #ff9a42, #ff6200);
             /* Foreground color */
-            box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
+            box-shadow: inset 24px 17px 90px rgb(255, 182, 113);
             /* Increased shadow by 8% */
             width: 100%;
             box-sizing: border-box;
             text-align: center;
             /* Center-align content */
+            font-size: large;
         }
 
         .input-box {
@@ -64,7 +67,7 @@
             width: 220px;
             height: 160px;
             box-sizing: border-box;
-            box-shadow: 0 9px 9px rgba(0, 0, 0, 0.18);
+            box-shadow: 5px 8px 9px rgba(0, 0, 0, 0.18);
             /* Increased shadow by 8% */
             text-align: center;
             /* Center-align content */
@@ -73,7 +76,7 @@
 
 
         .input-box:hover {
-            box-shadow: #00000066 0 9px 12px;
+            box-shadow: #00000066 6px 9px 12px;
         }
 
         .input-box textarea {
@@ -86,7 +89,7 @@
             box-sizing: border-box;
             overflow-x: hidden;
             overflow-y: auto;
-            cursor: not-allowed;
+            cursor: url("rounded-not-allowed.png") , auto;
         }
 
         .input-box textarea::-webkit-scrollbar {
@@ -190,6 +193,7 @@
         }
 
         .result-box h3 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             margin-top: 5px;
             font-size: 1.4em;
         }
@@ -203,6 +207,7 @@
             overflow-y: auto;
             max-height: 130px;
             padding: 10px;
+            cursor: text;
         }
 
         #result .result-box p::-webkit-scrollbar {
@@ -242,7 +247,7 @@
             margin-top: 10px;
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
             /* Transition for color, shadow, and transform */
-            box-shadow: 0 4px 13px rgba(0, 0, 0, 0.18);
+            box-shadow: 2px 4px 9px rgba(45, 14, 0, 0.426);
             /* Increased shadow by 8% */
             text-align: center;
             /* Center-align text */
@@ -266,11 +271,13 @@
             background-color: #451700;
             color: #ffffff;
             margin-top: 0px;
+            font-stretch: expanded;
             margin-bottom: 10px;
             position: absolute;
-            bottom: 5px;
+            bottom: 4.1px;
             left: 38.6%;
             width: 23%;
+            cursor: url("rounded-hand.png") , auto;
         }
 
         .copy-button:hover {
@@ -321,6 +328,7 @@
             /* Center-align text */
             font-size: 1.5em;
             /* Adjust text size here */
+            cursor: url("rounded-hand.png") , auto;
         }
 
         .merge-button:hover {
@@ -366,10 +374,18 @@
             background-color: #362b21;
             border-radius: 10px;
         }
+        .custom-cursor {
+  width: 20px;
+  height: 20px;
+  background-image: url("path/to/custom-cursor.png");
+  cursor: none;
+}
     </style>
 </head>
 
 <body>
+    
+    <div class="custom-cursor"></div>
     <h1>YENVISION CAPTIONS MERGER</h1>
     <div class="container ">
         <div class="big-box ">
@@ -448,7 +464,7 @@ Contact Us for Business Inquires.
         </div>
 
         <button class="merge-button" onclick="mergeAndDisplay()">
-            Merge & Generate Caption
+            Merge & Generate Captions
         </button>
 
         <div id="result" class="result-container"></div>
